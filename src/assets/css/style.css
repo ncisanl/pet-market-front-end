@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+:root {
+  --holiday-color: #81c3b4;
+  --moody-color: #436a9f;
+  --winter-sky-color: #a9c0cb;
+  --jet-stream-color: #ede6de;
+  --vibrant-yellow-color: #ffda29;
+  --limeade-color: #d3d95f;
+}
+
 .poppins-light {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
@@ -21,7 +30,7 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr;
   min-height: 100vh;
 }
 
@@ -29,24 +38,137 @@ body {
   padding: 20px;
 }
 
-a {
-  color: white;
-  text-decoration: none;
-  transition: 0.5s;
+/*Start Styles navBar*/
+.navbar-brand {
+  font-weight: 500;
+  color: var(--moody-color);
+  font-size: 24px;
+  transition: 0.3s color;
 }
 
-a:hover {
-  color: #dddddd;
+.navbar-brand:hover {
+  color: #5585c7;
 }
 
 .navbar {
-  background-color: #81c3b4;
+  background-color: var(--holiday-color);
 }
 
+.login-button {
+  background-color: var(--moody-color);
+  color: white !important;
+  font-size: 16px;
+  padding: 8px 11px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: 0.3s background-color;
+}
+
+.login-button:hover {
+  background-color: #5585c7;
+  color: white !important;
+  cursor: default;
+}
+
+.shopping-button {
+  cursor: pointer !important;
+}
+
+.navbar-toggler {
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.nav-link {
+  color: white;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--moody-color);
+}
+
+.dropdown > .dropdown-menu {
+  background-color: var(--moody-color);
+  border: none;
+}
+
+.dropdown-item {
+  font-weight: 500;
+  font-size: 12px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s background-color;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #5585c7;
+  color: white;
+  border-radius: 4px;
+}
+
+.dropdown-divider {
+  background-color: white;
+}
+
+@media (min-width: 991px) {
+  .navbar {
+    margin: 20px;
+    border-radius: 16px;
+  }
+
+  .nav-link-personalized:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--moody-color);
+    visibility: hidden;
+    transition: 0.3s ease-in-out;
+    color: var(--moody-color);
+  }
+
+  .nav-link-personalized:hover::before {
+    width: 100%;
+    visibility: visible;
+    color: var(--moody-color);
+  }
+
+  .dropdown > .dropdown-menu {
+    visibility: hidden;
+    opacity: 0;
+    top: 105%;
+    right: 0;
+    display: block;
+    transition: 0.1s ease-out;
+  }
+
+  .dropdown:hover > .dropdown-menu {
+    padding: 2px 0;
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+  }
+}
+/*End Styles navBar*/
+
+/*Start Styles Footer*/
 .footer-pet-market {
-  background-color: #81c3b4;
+  background-color: var(--holiday-color);
 }
 
 .icon-footer {
   color: #ffffff;
 }
+/*End Styles Footer*/
