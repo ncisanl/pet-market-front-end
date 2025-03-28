@@ -172,3 +172,23 @@ body {
   color: #ffffff;
 }
 /*End Styles Footer*/
+
+/*Start Styles Home*/
+.carousel-box-personalized {
+  background-color: rgba(67, 106, 159, 0.5);
+}
+
+.title-card-home-personalized {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  color: var(--holiday-color);
+}
+
+.icon-card-home-personalized {
+  width: 32px;
+  height: 32px;
+  background-color: var(--holiday-color);
+  color: white;
+}
+/*End Styles Home*/
