@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import Registrarse from "./views/Registrarse";
 import IniciarSesion from "./views/IniciarSesion";
 import Marketplace from "./views/Marketplace";
+import ProductMarketplace from "./views/ProductMarketplace";
+import Favorite from "./views/Favorite";
 
 const App = () => {
   const globalState = useDeveloper();
@@ -27,6 +29,11 @@ const App = () => {
                 path="/marketplace/:petType/:category"
                 element={<Marketplace />}
               />
+              <Route
+                path="/marketplace/post/:postId"
+                element={<ProductMarketplace />}
+              />
+              <Route path="/favorite" element={<Favorite />} />
             </Routes>
           </main>
           <Footer />

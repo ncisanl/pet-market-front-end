@@ -13,6 +13,7 @@ export const posts = [
     sale: false,
     discountPercentage: 0,
     imgPost: "",
+    favorite: true,
   },
   {
     idPost: "2",
@@ -27,6 +28,7 @@ export const posts = [
     sale: true,
     discountPercentage: 10,
     imgPost: "",
+    favorite: false,
   },
   {
     idPost: "3",
@@ -41,6 +43,7 @@ export const posts = [
     sale: false,
     discountPercentage: 0,
     imgPost: "",
+    favorite: false,
   },
   // Snacks (Categoría 2)
   {
@@ -56,6 +59,7 @@ export const posts = [
     sale: true,
     discountPercentage: 15,
     imgPost: "",
+    favorite: false,
   },
   {
     idPost: "5",
@@ -70,6 +74,7 @@ export const posts = [
     sale: false,
     discountPercentage: 0,
     imgPost: "",
+    favorite: false,
   },
   {
     idPost: "6",
@@ -84,6 +89,7 @@ export const posts = [
     sale: false,
     discountPercentage: 0,
     imgPost: "",
+    favorite: false,
   },
   // Medicamentos (Categoría 3)
   {
@@ -99,6 +105,7 @@ export const posts = [
     sale: false,
     discountPercentage: 0,
     imgPost: "",
+    favorite: true,
   },
   {
     idPost: "8",
@@ -113,6 +120,7 @@ export const posts = [
     sale: true,
     discountPercentage: 20,
     imgPost: "",
+    favorite: false,
   },
   {
     idPost: "9",
@@ -127,6 +135,7 @@ export const posts = [
     sale: false,
     discountPercentage: 0,
     imgPost: "",
+    favorite: false,
   },
   // Accesorios (Categoría 4)
   {
@@ -142,6 +151,7 @@ export const posts = [
     sale: false,
     discountPercentage: 0,
     imgPost: "",
+    favorite: false,
   },
   {
     idPost: "11",
@@ -156,6 +166,7 @@ export const posts = [
     sale: true,
     discountPercentage: 10,
     imgPost: "",
+    favorite: true,
   },
   {
     idPost: "12",
@@ -170,5 +181,6 @@ export const posts = [
     sale: false,
     discountPercentage: 0,
     imgPost: "",
+    favorite: true,
   },
 ];

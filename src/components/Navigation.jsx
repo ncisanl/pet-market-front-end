@@ -27,7 +27,7 @@ const Navigation = () => {
             </Link>
           </li>
           <li>
-            <Link className="dropdown-item" to="/">
+            <Link className="dropdown-item" to="/favorite">
               Favoritos
             </Link>
           </li>
