@@ -8,6 +8,7 @@ import Home from "./views/Home";
 import Footer from "./components/Footer";
 import Registrarse from "./views/Registrarse";
 import IniciarSesion from "./views/IniciarSesion";
+import Carrito from "./views/Carrito";
 import Marketplace from "./views/Marketplace";
 import ProductMarketplace from "./views/ProductMarketplace";
 import Favorite from "./views/Favorite";
@@ -25,6 +26,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/registrarse" element={<Registrarse />} />
               <Route path="/iniciar-sesion" element={<IniciarSesion />} />
+              <Route path="/carrito" element={<Carrito />} />
               <Route
                 path="/marketplace/:petType/:category"
                 element={<Marketplace />}

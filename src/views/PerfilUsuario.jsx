@@ -58,7 +58,7 @@ const PerfilUsuario = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-perfil">
       <div className="perfil-usuario">
         <div className="perfil-header">
           <div className="perfil-foto">

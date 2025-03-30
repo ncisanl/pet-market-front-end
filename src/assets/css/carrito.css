@@ -1,0 +1,140 @@
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  background-color: #f3f4f9;
+  color: #333;
+}
+
+.carrito-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.carrito-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.carrito-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.carrito-item-info h3 {
+  font-size: 18px;
+}
+
+.carrito-item-info p {
+  font-size: 16px;
+  color: #555;
+}
+
+.carrito-quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.carrito-quantity-control button {
+  padding: 5px 10px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.carrito-quantity-control button:disabled {
+  background-color: #ddd;
+}
+
+.carrito-remove-item button {
+  padding: 10px 15px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.carrito-total {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.carrito-total h3 {
+  font-size: 20px;
+  color: #333;
+}
+
+.carrito-checkout {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.carrito-checkout button {
+  padding: 10px 30px;
+  background-color: #90d95f;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.carrito-checkout button:hover {
+  background-color: #aae384;
+}
+
+@media (max-width: 768px) {
+  .carrito-items {
+    flex-direction: column;
+  }
+
+  .carrito-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .carrito-quantity-control {
+    margin-top: 10px;
+    gap: 15px;
+  }
+
+  .carrito-remove-item {
+    margin-top: 10px;
+  }
+
+  .carrito-remove-item button {
+    margin-top: 10px;
+  }
+
+  .carrito-checkout {
+    margin-top: 20px;
+  }
+
+  .carrito-checkout button {
+    margin-top: 10px;
+  }
+}
