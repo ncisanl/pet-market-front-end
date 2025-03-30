@@ -144,6 +144,12 @@ body {
     color: var(--moody-color);
   }
 
+  .nav-link-personalized:focus {
+    width: 100%;
+    visibility: visible;
+    color: var(--moody-color);
+  }
+
   .dropdown > .dropdown-menu {
     visibility: hidden;
     opacity: 0;

@@ -6,6 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Home from "./views/Home";
 import Footer from "./components/Footer";
+import Registrarse from "./views/Registrarse";
+import IniciarSesion from "./views/IniciarSesion";
+import Marketplace from "./views/Marketplace";
 
 const App = () => {
   const globalState = useDeveloper();
@@ -18,6 +21,12 @@ const App = () => {
           <main className="content">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/registrarse" element={<Registrarse />} />
+              <Route path="/iniciar-sesion" element={<IniciarSesion />} />
+              <Route
+                path="/marketplace/:petType/:category"
+                element={<Marketplace />}
+              />
             </Routes>
           </main>
           <Footer />

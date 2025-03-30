@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/icon/tabIcon.png";
 
-const Navigation = () => {
-  const tokenTemp = false;
+const tokenTemp = false;
 
+const petTypes = [
+  { name: "Gato", path: "gato" },
+  { name: "Perro", path: "perro" },
+  { name: "Exótico", path: "exotico" },
+];
+
+const categories = ["Alimentos", "Snacks", "Medicamentos", "Accesorios"];
+
+const Navigation = () => {
   const isLogin = () => {
     if (tokenTemp) {
       return (
@@ -38,12 +46,12 @@ const Navigation = () => {
     return (
       <>
         <li>
-          <Link className="dropdown-item" to="/">
+          <Link className="dropdown-item" to="/iniciar-sesion">
             Iniciar Sesión
           </Link>
         </li>
         <li>
-          <Link className="dropdown-item" to="/">
+          <Link className="dropdown-item" to="/registrarse">
             Registrarse
           </Link>
         </li>
@@ -98,21 +106,35 @@ const Navigation = () => {
 
         <div className="collapse navbar-collapse" id="navbarScroll">
           <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link nav-link-personalized" to="/">
-                Gato
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link nav-link-personalized" to="/">
-                Perro
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link nav-link-personalized" to="/">
-                Exótico
-              </Link>
-            </li>
+            {petTypes.map((pet, index) => (
+              <li className="nav-item dropdown" key={index}>
+                <button
+                  className="nav-link nav-link-personalized dropdown-toggle"
+                  id={`petDropdown-${pet.path}`}
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  data-bs-boundary="viewport"
+                  aria-expanded="false"
+                >
+                  {pet.name}
+                </button>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby={`petDropdown-${pet.path}`}
+                >
+                  {categories.map((category, categoryIndex) => (
+                    <li key={categoryIndex}>
+                      <Link
+                        className="dropdown-item"
+                        to={`/marketplace/${pet.path}/${category.toLowerCase()}`}
+                      >
+                        {category}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
             <li className="nav-item">
               <Link className="nav-link nav-link-personalized" to="/">
                 Ofertas
@@ -121,7 +143,10 @@ const Navigation = () => {
           </ul>
 
           <div className="d-none d-lg-flex">
-            <Link className="nav-link login-button shopping-button" to="/">
+            <Link
+              className="nav-link login-button shopping-button"
+              to="/carrito"
+            >
               <i className="fa-solid fa-cart-shopping fa-lg"></i>
             </Link>
           </div>

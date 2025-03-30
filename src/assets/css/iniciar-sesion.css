@@ -1,0 +1,246 @@
+body {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  background-color: #f7fff7;
+}
+
+.container-iniciar-sesion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.form-image-iniciar-sesion {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: transparent;
+  border-radius: 8px;
+  width: 900px;
+  max-width: 100%;
+  margin: 0 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.form-iniciar-sesion {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0 8px 8px 0;
+  margin: 0 auto;
+}
+
+.form-iniciar-sesion h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-iniciar-sesion {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0 15px;
+  background-color: #eeeeee;
+}
+
+.input-iniciar-sesion input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  background-color: inherit;
+}
+
+.olvide-contrasena {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  margin-top: 10px;
+  align-self: flex-start;
+  width: 100%;
+  text-align: right;
+}
+
+.olvide-contrasena:focus {
+  outline: none;
+}
+
+.iniciar-sesion-btn {
+  display: flex;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 0.25rem;
+  position: relative;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background 0.8s ease-out;
+  background: #81c3b4 radial-gradient(circle, transparent 1%, #81c3b4 1%)
+    center/15000%;
+  width: auto;
+}
+
+.iniciar-sesion-btn:active {
+  background-color: #bdf5e8;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.iniciar-cuenta-btn {
+  display: flex;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  padding: 10px 22px;
+  border-radius: 0.25rem;
+  position: relative;
+  margin-left: 167px;
+  margin-top: 6px;
+  transition: background 0.8s ease-out;
+  background: #81c3b4 radial-gradient(circle, transparent 1%, #81c3b4 1%)
+    center/15000%;
+}
+
+.iniciar-cuenta-btn:active {
+  background-color: #bdf5e8;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.image-section-iniciar-sesion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 100%;
+  position: relative;
+  max-height: 100%;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.image-section-iniciar-sesion img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px 0 0 8px;
+}
+
+.image-text-iniciar-sesion {
+  position: absolute;
+  bottom: 20px;
+  right: 5px;
+  color: white;
+  text-align: left;
+  left: 10px;
+}
+
+.image-text-iniciar-sesion h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.image-text-iniciar-sesion p {
+  margin: 0;
+  font-size: 15px;
+  color: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.iniciar-cuenta-text {
+  font-weight: 600;
+}
+
+.image-btn-iniciar-sesion {
+  display: inline-block;
+  color: white;
+  background-color: #81c3b4;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 0.25rem;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.5s ease-out;
+  margin-top: 10px;
+  margin-left: 1px;
+}
+
+.image-btn-iniciar-sesion:hover {
+  background-color: #bdf5e8;
+}
+
+.image-btn-iniciar-sesion:active {
+  background-color: #bdf5e8;
+  background-size: 100%;
+  transition: background 0s;
+}
+
+@media (max-width: 1201px) {
+  .container-iniciar-sesion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .form-iniciar-sesion {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 8px;
+  }
+
+  .iniciar-cuenta-btn {
+    display: block;
+  }
+
+  .image-section-iniciar-sesion {
+    display: none;
+  }
+
+  .form-image-iniciar-sesion {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .iniciar-cuenta-btn {
+    display: none;
+  }
+}
