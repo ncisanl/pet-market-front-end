@@ -3,21 +3,21 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import "../assets/css/login.css";
 import loginImg from "../assets/img/login.jpg";
-import Context from "../contexts/Context.js";
 import { errorToast, successToast } from "../utils/toast.js";
 import { ENDPOINT } from "../config/constants.js";
+import UserContext from "../contexts/UserContext.jsx";
 
 const initialLoginForm = { userName: "", password: "" };
 
 const Login = () => {
   const navigate = useNavigate();
+  const { setUserData } = useContext(UserContext);
   const [user, setUser] = useState(initialLoginForm);
-  const { setDeveloper } = useContext(Context);
 
   const handleUser = (event) =>
     setUser({ ...user, [event.target.name]: event.target.value });
 
-  const handleLoginForm = (event) => {
+  const handleLoginForm = async (event) => {
     event.preventDefault();
 
     if (!user.userName.trim()) {
@@ -28,17 +28,17 @@ const Login = () => {
       return errorToast("Contraseña obligtoria");
     }
 
-    axios
-      .post(ENDPOINT.login, user)
-      .then(({ data }) => {
-        window.sessionStorage.setItem("token", data.token);
-        successToast(data.message);
-        setDeveloper({});
-        navigate("/");
-      })
-      .catch(({ response: { data } }) => {
-        return errorToast(data.message);
-      });
+    try {
+      const { data } = await axios.post(ENDPOINT.login, user);
+
+      window.sessionStorage.setItem("token", data.token);
+      // setUserData(data);
+
+      successToast(data.message);
+      navigate("/");
+    } catch ({ response: { data } }) {
+      errorToast(data.message);
+    }
   };
 
   return (

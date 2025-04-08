@@ -1,6 +1,5 @@
 import "./assets/css/style.css";
-import Context from "./contexts/Context";
-import useDeveloper from "./hooks/useDeveloper";
+import { UserProvider } from "./contexts/UserContext.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
@@ -15,10 +14,8 @@ import ProductMarketplace from "./views/ProductMarketplace";
 import Favorite from "./views/Favorite";
 
 const App = () => {
-  const globalState = useDeveloper();
-
   return (
-    <Context.Provider value={globalState}>
+    <UserProvider>
       <BrowserRouter>
         <div className="grid-container">
           <Navigation />
@@ -43,7 +40,7 @@ const App = () => {
           <Footer />
         </div>
       </BrowserRouter>
-    </Context.Provider>
+    </UserProvider>
   );
 };
 

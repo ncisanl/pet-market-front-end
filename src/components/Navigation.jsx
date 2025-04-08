@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import logo from "../assets/icon/tabIcon.png";
-import Context from "../contexts/Context.js";
+import UserContext from "../contexts/UserContext.jsx";
 
 const petTypes = [
   { name: "Gato", path: "gato" },
@@ -13,15 +13,16 @@ const categories = ["Alimentos", "Snacks", "Medicamentos", "Accesorios"];
 
 const Navigation = () => {
   const navigate = useNavigate();
-  const { getDeveloper, setDeveloper } = useContext(Context);
+  const { userData, clearUserData } = useContext(UserContext);
 
   const logout = () => {
-    setDeveloper();
     window.sessionStorage.removeItem("token");
+    clearUserData();
     navigate("/login");
   };
   const isLogin = () => {
-    if (getDeveloper) {
+    debugger;
+    if (userData) {
       return (
         <>
           <li>
