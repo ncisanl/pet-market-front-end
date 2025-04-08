@@ -4,7 +4,7 @@ body {
   background-color: #f7fff7;
 }
 
-.container-iniciar-sesion {
+.container-login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@ body {
   width: 100%;
 }
 
-.form-image-iniciar-sesion {
+.form-image-login {
   display: flex;
   flex-direction: row-reverse;
   background-color: transparent;
@@ -25,7 +25,7 @@ body {
   align-items: stretch;
 }
 
-.form-iniciar-sesion {
+.form-login {
   background-color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -38,12 +38,12 @@ body {
   margin: 0 auto;
 }
 
-.form-iniciar-sesion h1 {
+.form-login h1 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.input-iniciar-sesion {
+.input-login {
   width: 100%;
   height: 40px;
   margin-bottom: 10px;
@@ -55,7 +55,7 @@ body {
   background-color: #eeeeee;
 }
 
-.input-iniciar-sesion input {
+.input-login input {
   border: none;
   outline: none;
   width: 100%;
@@ -63,24 +63,7 @@ body {
   background-color: inherit;
 }
 
-.olvide-contrasena {
-  background: none;
-  border: none;
-  color: #007bff;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 0;
-  margin-top: 10px;
-  align-self: flex-start;
-  width: 100%;
-  text-align: right;
-}
-
-.olvide-contrasena:focus {
-  outline: none;
-}
-
-.iniciar-sesion-btn {
+.login-btn {
   display: flex;
   color: white;
   cursor: pointer;
@@ -98,13 +81,13 @@ body {
   width: auto;
 }
 
-.iniciar-sesion-btn:active {
+.login-btn:active {
   background-color: #bdf5e8;
   background-size: 100%;
   transition: background 0s;
 }
 
-.iniciar-cuenta-btn {
+.login-account-btn {
   display: flex;
   color: white;
   cursor: pointer;
@@ -120,7 +103,7 @@ body {
     center/15000%;
 }
 
-.iniciar-cuenta-btn:active {
+.login-account-btn:active {
   background-color: #bdf5e8;
   background-size: 100%;
   transition: background 0s;
@@ -132,7 +115,7 @@ body {
   justify-content: center;
 }
 
-.image-section-iniciar-sesion {
+.image-section-login {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,14 +127,14 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.image-section-iniciar-sesion img {
+.image-section-login img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 8px 0 0 8px;
 }
 
-.image-text-iniciar-sesion {
+.image-text-login {
   position: absolute;
   bottom: 20px;
   right: 5px;
@@ -160,13 +143,13 @@ body {
   left: 10px;
 }
 
-.image-text-iniciar-sesion h1 {
+.image-text-login h1 {
   margin: 0;
   font-size: 30px;
   font-weight: bold;
 }
 
-.image-text-iniciar-sesion p {
+.image-text-login p {
   margin: 0;
   font-size: 15px;
   color: #f4f4f4;
@@ -174,11 +157,11 @@ body {
   border-radius: 5px;
 }
 
-.iniciar-cuenta-text {
+.login-account-text {
   font-weight: 600;
 }
 
-.image-btn-iniciar-sesion {
+.image-btn-login {
   display: inline-block;
   color: white;
   background-color: #81c3b4;
@@ -192,18 +175,18 @@ body {
   margin-left: 1px;
 }
 
-.image-btn-iniciar-sesion:hover {
+.image-btn-login:hover {
   background-color: #bdf5e8;
 }
 
-.image-btn-iniciar-sesion:active {
+.image-btn-login:active {
   background-color: #bdf5e8;
   background-size: 100%;
   transition: background 0s;
 }
 
 @media (max-width: 1201px) {
-  .container-iniciar-sesion {
+  .container-login {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -211,7 +194,7 @@ body {
     width: 100%;
   }
 
-  .form-iniciar-sesion {
+  .form-login {
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -224,15 +207,15 @@ body {
     border-radius: 8px;
   }
 
-  .iniciar-cuenta-btn {
+  .login-account-btn {
     display: block;
   }
 
-  .image-section-iniciar-sesion {
+  .image-section-login {
     display: none;
   }
 
-  .form-image-iniciar-sesion {
+  .form-image-login {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -240,7 +223,7 @@ body {
 }
 
 @media (min-width: 1200px) {
-  .iniciar-cuenta-btn {
+  .login-account-btn {
     display: none;
   }
 }

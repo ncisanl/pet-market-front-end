@@ -1,27 +1,29 @@
-import { toast } from "react-toastify";
+import { Bounce, toast } from "react-toastify";
 
 export const successToast = (message = "") => {
-  return toast(`🦄 ${message}`, {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
+  return toast.success(`${message}`, {
+    position: "bottom-right",
+    autoClose: 3000,
+    hideProgressBar: true,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
-    theme: "light",
+    theme: "colored",
+    transition: Bounce,
   });
 };
 
 export const errorToast = (message = "") => {
-  return toast.error(`🐥 ${message}`, {
-    position: "top-right",
-    autoClose: 5000,
-    hideProgressBar: false,
+  return toast.error(`${message}`, {
+    position: "bottom-right",
+    autoClose: 3000,
+    hideProgressBar: true,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
-    theme: "light",
+    theme: "colored",
+    transition: Bounce,
   });
 };

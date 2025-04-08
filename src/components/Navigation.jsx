@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import logo from "../assets/icon/tabIcon.png";
-
-const tokenTemp = false;
+import Context from "../contexts/Context.js";
 
 const petTypes = [
   { name: "Gato", path: "gato" },
@@ -12,8 +12,16 @@ const petTypes = [
 const categories = ["Alimentos", "Snacks", "Medicamentos", "Accesorios"];
 
 const Navigation = () => {
+  const navigate = useNavigate();
+  const { getDeveloper, setDeveloper } = useContext(Context);
+
+  const logout = () => {
+    setDeveloper();
+    window.sessionStorage.removeItem("token");
+    navigate("/login");
+  };
   const isLogin = () => {
-    if (tokenTemp) {
+    if (getDeveloper) {
       return (
         <>
           <li>
@@ -35,7 +43,7 @@ const Navigation = () => {
             <hr className="dropdown-divider" />
           </li>
           <li>
-            <Link className="dropdown-item" to="/">
+            <Link onClick={logout} className="dropdown-item" to="/login">
               Cerrar Sesión
             </Link>
           </li>
@@ -46,7 +54,7 @@ const Navigation = () => {
     return (
       <>
         <li>
-          <Link className="dropdown-item" to="/iniciar-sesion">
+          <Link className="dropdown-item" to="/login">
             Iniciar Sesión
           </Link>
         </li>
