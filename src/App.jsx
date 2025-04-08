@@ -3,6 +3,8 @@ import { UserProvider } from "./contexts/UserContext.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
+import { GlobalSpinnerProvider } from "./contexts/GlobalSpinnerContext";
+import GlobalSpinner from "./components/GlobalSpinner";
 import Navigation from "./components/Navigation";
 import Home from "./views/Home";
 import Footer from "./components/Footer";
@@ -15,32 +17,35 @@ import Favorite from "./views/Favorite";
 
 const App = () => {
   return (
-    <UserProvider>
-      <BrowserRouter>
-        <div className="grid-container">
-          <Navigation />
-          <main className="content">
-            <ToastContainer />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/registrarse" element={<Registrarse />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/carrito" element={<Carrito />} />
-              <Route
-                path="/marketplace/:petType/:category"
-                element={<Marketplace />}
-              />
-              <Route
-                path="/marketplace/post/:postId"
-                element={<ProductMarketplace />}
-              />
-              <Route path="/favorite" element={<Favorite />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </BrowserRouter>
-    </UserProvider>
+    <GlobalSpinnerProvider>
+      <UserProvider>
+        <BrowserRouter>
+          <GlobalSpinner />
+          <div className="grid-container">
+            <Navigation />
+            <main className="content">
+              <ToastContainer />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/registrarse" element={<Registrarse />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/carrito" element={<Carrito />} />
+                <Route
+                  path="/marketplace/:petType/:category"
+                  element={<Marketplace />}
+                />
+                <Route
+                  path="/marketplace/post/:postId"
+                  element={<ProductMarketplace />}
+                />
+                <Route path="/favorite" element={<Favorite />} />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
+        </BrowserRouter>
+      </UserProvider>
+    </GlobalSpinnerProvider>
   );
 };
 

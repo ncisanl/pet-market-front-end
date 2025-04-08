@@ -6,13 +6,15 @@ import loginImg from "../assets/img/login.jpg";
 import { errorToast, successToast } from "../utils/toast.js";
 import { ENDPOINT } from "../config/constants.js";
 import UserContext from "../contexts/UserContext.jsx";
+import GlobalSpinnerContext from "../contexts/GlobalSpinnerContext";
 
 const initialLoginForm = { userName: "", password: "" };
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setUserData } = useContext(UserContext);
   const [user, setUser] = useState(initialLoginForm);
+  const { setUserData } = useContext(UserContext);
+  const { showSpinner, hideSpinner } = useContext(GlobalSpinnerContext);
 
   const handleUser = (event) =>
     setUser({ ...user, [event.target.name]: event.target.value });
@@ -28,16 +30,20 @@ const Login = () => {
       return errorToast("Contraseña obligtoria");
     }
 
+    showSpinner();
+
     try {
       const { data } = await axios.post(ENDPOINT.login, user);
 
       window.sessionStorage.setItem("token", data.token);
-      // setUserData(data);
+      setUserData(data);
 
       successToast(data.message);
       navigate("/");
     } catch ({ response: { data } }) {
       errorToast(data.message);
+    } finally {
+      hideSpinner();
     }
   };
 

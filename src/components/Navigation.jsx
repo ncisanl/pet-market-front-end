@@ -21,7 +21,6 @@ const Navigation = () => {
     navigate("/login");
   };
   const isLogin = () => {
-    debugger;
     if (userData) {
       return (
         <>
