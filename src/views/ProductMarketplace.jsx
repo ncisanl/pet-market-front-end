@@ -41,7 +41,6 @@ function ProductMarketplace() {
                 {product.brand}
               </h2>
               <h1 className="text-dark h3">{product.title}</h1>
-              {/* Descripción completa del producto */}
               <p className="text-muted">{product.fullDescription}</p>
               <p className="text-muted">
                 <small>

@@ -77,7 +77,7 @@ const Login = () => {
               <button type="submit" className="login-btn">
                 Iniciar Sesión
               </button>
-              <Link to="/registrarse">
+              <Link to="/register">
                 <button type="button" className="login-account-btn">
                   Registrarse
                 </button>
@@ -94,7 +94,7 @@ const Login = () => {
               <span className="login-account-text">"Registrarse"</span> y
               comienza a disfrutar de todas las opciones para ti y tu mascota.
             </p>
-            <Link to="/registrarse" className="image-btn-login">
+            <Link to="/register" className="image-btn-login">
               <b>Registrarse</b>
             </Link>
           </div>

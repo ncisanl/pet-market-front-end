@@ -4,7 +4,7 @@ body {
   background-color: #f7fff7;
 }
 
-.container-registrarse {
+.container-register {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,7 @@ body {
   width: 100%;
 }
 
-.form-image-registrarse {
+.form-image-register {
   display: flex;
   flex-direction: row;
   background-color: transparent;
@@ -25,7 +25,7 @@ body {
   align-items: stretch;
 }
 
-.form-registrarse {
+.form-register {
   background-color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
@@ -37,23 +37,23 @@ body {
   border-radius: 8px 0 0 8px;
 }
 
-.form-registrarse h1 {
+.form-register h1 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.input-registrarse-group {
+.input-register-group {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.input-registrarse-group .input-registrarse {
+.input-register-group .input-register {
   width: 48%;
 }
 
-.input-registrarse input,
-.select-registrarse select {
+.input-register input,
+.select-register select {
   width: 100%;
   padding: 8px;
   margin: 5px 0;
@@ -63,11 +63,11 @@ body {
   background-color: inherit;
 }
 
-.input-registrarse-group .input-registrarse {
+.input-register-group .input-register {
   width: 48%;
 }
 
-.input-registrarse {
+.input-register {
   width: 100%;
   height: 40px;
   margin-bottom: 10px;
@@ -79,7 +79,7 @@ body {
   background-color: #eeeeee;
 }
 
-.input-registrarse input {
+.input-register input {
   border: none;
   outline: none;
   width: 100%;
@@ -91,7 +91,7 @@ body {
   margin-top: 5px;
 }
 
-.registrarse-password {
+.register-password {
   background: none;
   border: none;
   color: #007bff;
@@ -102,17 +102,17 @@ body {
   align-self: flex-start;
 }
 
-.registrarse-password:focus {
+.register-password:focus {
   outline: none;
 }
 
-.select-registrarse {
+.select-register {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.select-registrarse select {
+.select-register select {
   width: 48%;
   padding: 12px;
   margin-bottom: 10px;
@@ -124,31 +124,31 @@ body {
   transition: border-color 0.3s ease;
 }
 
-.select-registrarse select:focus {
+.select-register select:focus {
   border-color: #007bff;
   outline: none;
 }
 
-.select-registrarse select option {
+.select-register select option {
   padding: 10px;
   background-color: #fff;
 }
 
-.input-registrarse-checkbox {
+.input-register-checkbox {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.input-registrarse-checkbox span {
+.input-register-checkbox span {
   font-size: 12px;
 }
 
-.input-registrarse-checkbox input {
+.input-register-checkbox input {
   margin-right: 5px;
 }
 
-.registrarse-btn {
+.register-btn {
   display: flex;
   color: white;
   cursor: pointer;
@@ -160,13 +160,13 @@ body {
   left: 170px;
 }
 
-.registrarse-btn {
+.register-btn {
   transition: background 0.8s ease-out;
   background: #81c3b4 radial-gradient(circle, transparent 1%, #81c3b4 1%)
     center/15000%;
 }
 
-.registrarse-btn:active {
+.register-btn:active {
   background-color: #aaf4e2;
   background-size: 100%;
   transition: background 0s;
@@ -246,7 +246,7 @@ body {
   padding: 10px;
 }
 
-.registrarse-text {
+.register-text {
   font-weight: 600;
 }
 
@@ -275,7 +275,7 @@ body {
 }
 
 @media (max-width: 1201px) {
-  .container-registrarse {
+  .container-register {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -283,7 +283,7 @@ body {
     width: 100%;
   }
 
-  .form-registrarse {
+  .form-register {
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -304,7 +304,7 @@ body {
     display: none;
   }
 
-  .form-image-registrarse {
+  .form-image-register {
     flex-direction: column;
     align-items: center;
     justify-content: center;
