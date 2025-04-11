@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const ProfileInfoSection = ({ data, onSave }) => {
   const [editing, setEditing] = useState(false);
-  // Inicializa el estado local con la data recibida
+
   const [localData, setLocalData] = useState({
     userName: data.userName,
     name: data.name,
@@ -23,7 +23,6 @@ const ProfileInfoSection = ({ data, onSave }) => {
   };
 
   const handleSave = async () => {
-    // Llama a la función onSave que debe actualizar la data en el contexto/API.
     await onSave(localData);
     setEditing(false);
   };

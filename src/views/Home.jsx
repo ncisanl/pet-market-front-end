@@ -55,6 +55,7 @@ const Home = () => {
                 "Aprovecha los descuentos de temporada en alimento, accesorios y más. ¡Mima a tu mascota y ahorra!"
               }
               titleButton={"Ver Ofertas"}
+              linkRedirect="/"
             />
 
             {/* Card 2 */}
@@ -65,6 +66,7 @@ const Home = () => {
                 "Desde baños y peluquería hasta asesoría veterinaria. Cuida a tu mascota con profesionales de confianza."
               }
               titleButton={"Encuentra Servicios"}
+              linkRedirect="/"
             />
 
             {/* Card 3 */}
@@ -75,6 +77,7 @@ const Home = () => {
                 "Comparte experiencias y recibe consejos de expertos y amantes de las mascotas en nuestra comunidad en línea."
               }
               titleButton={"Únete Ahora"}
+              linkRedirect="/register"
             />
           </div>
         </div>

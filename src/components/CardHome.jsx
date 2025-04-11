@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const CardHome = ({ icon, title, description, titleButton }) => {
+const CardHome = ({ icon, title, description, titleButton, linkRedirect }) => {
   return (
     <div className="col-md-4 mb-4">
       <div className="bg-light p-4 h-100 rounded">
@@ -12,7 +12,7 @@ const CardHome = ({ icon, title, description, titleButton }) => {
         </div>
         <p className="mb-3">{description}</p>
         <Link
-          to="/"
+          to={linkRedirect}
           className="text-decoration-none text-primary d-inline-flex align-items-center"
         >
           {titleButton}
