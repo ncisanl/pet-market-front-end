@@ -7,6 +7,7 @@ import { errorToast, successToast } from "../utils/toast.js";
 import { ENDPOINT } from "../config/constants.js";
 import UserContext from "../contexts/UserContext.jsx";
 import GlobalSpinnerContext from "../contexts/GlobalSpinnerContext";
+import InputField from "../components/InputField.jsx";
 
 const initialLoginForm = { userName: "", password: "" };
 
@@ -53,26 +54,25 @@ const Login = () => {
         <div className="form-login login">
           <form onSubmit={handleLoginForm}>
             <h1>Iniciar Sesión</h1>
-            <div className="input-login">
-              <i className="fa-solid fa-user"></i>
-              <input
-                value={user.userName}
-                name="userName"
-                type="text"
-                placeholder="Usuario"
-                onChange={handleUser}
-              />
-            </div>
-            <div className="input-login">
-              <i className="fa-solid fa-lock"></i>
-              <input
-                value={user.password}
-                name="password"
-                type="password"
-                placeholder="Contraseña"
-                onChange={handleUser}
-              />
-            </div>
+
+            <InputField
+              icon="fa-solid fa-user"
+              value={user.userName}
+              name="userName"
+              type="text"
+              placeholder="Usuario"
+              onChange={handleUser}
+            />
+
+            <InputField
+              icon="fa-solid fa-lock"
+              value={user.password}
+              name="password"
+              type="password"
+              placeholder="Contraseña"
+              onChange={handleUser}
+            />
+
             <div className="button-group">
               <button type="submit" className="login-btn">
                 Iniciar Sesión

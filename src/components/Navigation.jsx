@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import logo from "../assets/icon/tabIcon.png";
 import UserContext from "../contexts/UserContext.jsx";
+import ProfileContext from "../contexts/ProfileContext.jsx";
 
 const petTypes = [
   { name: "Gato", path: "gato" },
@@ -14,9 +15,11 @@ const categories = ["Alimentos", "Snacks", "Medicamentos", "Accesorios"];
 const Navigation = () => {
   const navigate = useNavigate();
   const { userData, clearUserData } = useContext(UserContext);
+  const { clearProfileData } = useContext(ProfileContext);
 
   const logout = () => {
     window.sessionStorage.removeItem("token");
+    clearProfileData();
     clearUserData();
     navigate("/login");
   };
@@ -25,7 +28,7 @@ const Navigation = () => {
       return (
         <>
           <li>
-            <Link className="dropdown-item" to="/">
+            <Link className="dropdown-item" to="/profile">
               Perfil
             </Link>
           </li>

@@ -64,7 +64,6 @@ const Register = () => {
 
   const handleRegisterForm = async (event) => {
     event.preventDefault();
-    console.log(userRegister);
 
     showSpinner();
     try {

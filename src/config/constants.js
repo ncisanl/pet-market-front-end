@@ -5,4 +5,6 @@ export const ENDPOINT = {
   communes: `${URLBASE}/communes`,
   login: `${URLBASE}/login`,
   register: `${URLBASE}/register`,
+  profile: `${URLBASE}/user/profile`,
+  profileUpdate: `${URLBASE}/user/profile/update`,
 };
