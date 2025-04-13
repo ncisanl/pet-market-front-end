@@ -1,28 +1,49 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { posts } from "../assets/js/post.js";
 import CardMarketplace from "../components/CardMarketplace";
 import Pagination from "../components/Pagination";
+import GlobalSpinnerContext from "../contexts/GlobalSpinnerContext.jsx";
+import axios from "axios";
+import { ENDPOINT } from "../config/constants.js";
+import { errorToast, successToast } from "../utils/toast.js";
 
 function Marketplace() {
   const { petType, category } = useParams();
+  const { showSpinner, hideSpinner } = useContext(GlobalSpinnerContext);
+  const [posts, setPosts] = useState([]);
 
-  // Quita la "s" final de las categorias
-  const normalizedCategory = category.toLowerCase().replace(/s$/, "");
+  const petTypeId = petType === "gato" ? 1 : petType === "perro" ? 2 : 3;
+  const categoryId =
+    category === "alimentos"
+      ? 1
+      : category === "snacks"
+        ? 2
+        : category === "medicamentos"
+          ? 3
+          : 4;
 
-  // Filtra los productos que coincidan con la categoría (ignorando mayúsculas)
-  const filteredPosts = posts.filter(
-    (post) => post.categoryName.toLowerCase() === normalizedCategory,
-  );
+  useEffect(() => {
+    const url = ENDPOINT.postCategoryPetType
+      .replace(":petTypeId", petTypeId)
+      .replace(":categoryId", categoryId);
+    showSpinner();
+    axios
+      .get(url)
+      .then(({ data }) => {
+        setPosts(data);
+      })
+      .catch(({ response: { data } }) => {
+        errorToast(data.message);
+      })
+      .finally(() => hideSpinner());
+  }, [petTypeId, categoryId, showSpinner, hideSpinner]);
 
-  // Lógica de paginación
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(15);
-
-  const totalPosts = filteredPosts.length;
+  const totalPosts = posts.length;
   const totalPages = Math.ceil(totalPosts / pageSize);
   const startIndex = (currentPage - 1) * pageSize;
-  const postsToShow = filteredPosts.slice(startIndex, startIndex + pageSize);
+  const postsToShow = posts.slice(startIndex, startIndex + pageSize);
 
   const handleNext = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -34,7 +55,24 @@ function Marketplace() {
 
   const handlePageSizeChange = (e) => {
     setPageSize(Number(e.target.value));
-    setCurrentPage(1); // Reinicia a la primera página al cambiar el tamaño
+    setCurrentPage(1);
+  };
+
+  const onToggleFavorite = async (postId) => {
+    const token = window.sessionStorage.getItem("token");
+    showSpinner();
+    try {
+      await axios.post(
+        `${ENDPOINT.addPostFavorite}`,
+        { postId },
+        { headers: { Authorization: `Bearer ${token}` } },
+      );
+      successToast("Estado de favorito actualizado");
+    } catch ({ response: { data } }) {
+      errorToast(data.message);
+    } finally {
+      hideSpinner();
+    }
   };
 
   return (
@@ -51,10 +89,13 @@ function Marketplace() {
         {postsToShow.length > 0 ? (
           postsToShow.map((product) => (
             <div
-              key={product.idPost}
+              key={product.postId}
               className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex mb-4"
             >
-              <CardMarketplace product={product} />
+              <CardMarketplace
+                product={product}
+                onToggleFavorite={onToggleFavorite}
+              />
             </div>
           ))
         ) : (

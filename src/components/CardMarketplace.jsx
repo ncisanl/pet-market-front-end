@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../contexts/UserContext.jsx";
 
 // Función para formatear el precio con separador de miles y prefijo "$"
 const formatPrice = (price) => {
@@ -7,17 +8,35 @@ const formatPrice = (price) => {
 };
 
 const CardMarketplace = ({ product, onToggleFavorite }) => {
-  const [favorite, setFavorite] = useState(product.favorite || false);
+  const { userData } = useContext(UserContext);
+  const [postFavorite, setFavorite] = useState(product.postFavorite || false);
+
+  const isLogin = () => {
+    if (userData) {
+      return (
+        <button
+          className="btn btn-link p-0"
+          onClick={toggleFavorite}
+          aria-label="Toggle Favorite"
+        >
+          <i
+            className="fa-solid fa-heart"
+            style={{ color: postFavorite ? "red" : "grey", fontSize: "1.5rem" }}
+          ></i>
+        </button>
+      );
+    }
+  };
 
   useEffect(() => {
-    setFavorite(product.favorite || false);
-  }, [product.favorite]);
+    setFavorite(product.postFavorite || false);
+  }, [product.postFavorite]);
 
   const toggleFavorite = () => {
-    const newFavorite = !favorite;
+    const newFavorite = !postFavorite;
     setFavorite(newFavorite);
     if (onToggleFavorite) {
-      onToggleFavorite(product.idPost, newFavorite);
+      onToggleFavorite(product.postId, product.favoriteId, newFavorite);
     }
   };
 
@@ -25,7 +44,8 @@ const CardMarketplace = ({ product, onToggleFavorite }) => {
     <div className="card mb-4" style={{ width: "18rem" }}>
       <img
         src={
-          product.imgPost || "https://via.placeholder.com/286x180?text=No+Image"
+          product.urlImage ||
+          "https://via.placeholder.com/286x180?text=No+Image"
         }
         className="card-img-top"
         alt={product.title}
@@ -33,16 +53,7 @@ const CardMarketplace = ({ product, onToggleFavorite }) => {
       <div className="card-body">
         <div className="d-flex justify-content-between align-items-center">
           <h5 className="card-title mb-0">{product.title}</h5>
-          <button
-            className="btn btn-link p-0"
-            onClick={toggleFavorite}
-            aria-label="Toggle Favorite"
-          >
-            <i
-              className="fa-solid fa-heart"
-              style={{ color: favorite ? "red" : "grey", fontSize: "1.5rem" }}
-            ></i>
-          </button>
+          {isLogin()}
         </div>
         <p className="card-text">{product.simpleDescription}</p>
         <p className="card-text">
@@ -63,7 +74,7 @@ const CardMarketplace = ({ product, onToggleFavorite }) => {
         )}
         <div className="mt-3">
           <Link
-            to={`/marketplace/post/${product.idPost}`}
+            to={`/marketplace/post/${product.postId}`}
             className="btn btn-primary"
           >
             Ver Detalle

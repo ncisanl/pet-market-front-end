@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useCallback, useState } from "react";
 
 const GlobalSpinnerContext = createContext({
   isLoading: false,
@@ -9,8 +9,12 @@ const GlobalSpinnerContext = createContext({
 export const GlobalSpinnerProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const showSpinner = () => setIsLoading(true);
-  const hideSpinner = () => setIsLoading(false);
+  const showSpinner = useCallback(() => {
+    setIsLoading(true);
+  }, []);
+  const hideSpinner = useCallback(() => {
+    setIsLoading(false);
+  }, []);
 
   return (
     <GlobalSpinnerContext.Provider

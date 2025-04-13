@@ -1,19 +1,64 @@
-import { useState } from "react";
-import { posts } from "../assets/js/post.js";
+import { useCallback, useContext, useEffect, useState } from "react";
 import CardMarketplace from "../components/CardMarketplace";
 import Pagination from "../components/Pagination";
+import { ENDPOINT } from "../config/constants.js";
+import axios from "axios";
+import { errorToast, successToast } from "../utils/toast.js";
+import GlobalSpinnerContext from "../contexts/GlobalSpinnerContext.jsx";
 
 function Favorite() {
-  // Filtrar los productos que tengan favorite true
-  const filteredPosts = posts.filter((post) => post.favorite === true);
+  const [postsFavorites, setPostsFavorites] = useState([]);
+  const { showSpinner, hideSpinner } = useContext(GlobalSpinnerContext);
+
+  const loadFavorites = useCallback(() => {
+    const token = window.sessionStorage.getItem("token");
+    showSpinner();
+    axios
+      .get(ENDPOINT.favorites, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+        setPostsFavorites(data);
+      })
+      .catch(({ response: { data } }) => {
+        errorToast(data.message);
+      })
+      .finally(() => hideSpinner());
+  }, [showSpinner, hideSpinner]);
+
+  useEffect(() => {
+    loadFavorites();
+  }, [loadFavorites]);
+
+  const onToggleFavorite = useCallback(
+    async (postId, favoriteId) => {
+      const token = window.sessionStorage.getItem("token");
+      showSpinner();
+      const url = ENDPOINT.deletePostFavorite.replace(
+        ":favoriteId",
+        favoriteId,
+      );
+      try {
+        const { data } = await axios.delete(url, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        successToast(data.message);
+        loadFavorites();
+      } catch ({ response: { data } }) {
+        errorToast(data.message);
+      } finally {
+        hideSpinner();
+      }
+    },
+    [showSpinner, hideSpinner, loadFavorites],
+  );
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(15);
-
-  const totalPosts = filteredPosts.length;
+  const totalPosts = postsFavorites.length;
   const totalPages = Math.ceil(totalPosts / pageSize);
   const startIndex = (currentPage - 1) * pageSize;
-  const postsToShow = filteredPosts.slice(startIndex, startIndex + pageSize);
+  const postsToShow = postsFavorites.slice(startIndex, startIndex + pageSize);
 
   const handleNext = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -25,7 +70,7 @@ function Favorite() {
 
   const handlePageSizeChange = (e) => {
     setPageSize(Number(e.target.value));
-    setCurrentPage(1); // Reinicia a la primera página al cambiar el tamaño
+    setCurrentPage(1);
   };
 
   return (
@@ -39,10 +84,13 @@ function Favorite() {
         {postsToShow.length > 0 ? (
           postsToShow.map((product) => (
             <div
-              key={product.idPost}
+              key={product.postId}
               className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex mb-4"
             >
-              <CardMarketplace product={product} />
+              <CardMarketplace
+                product={product}
+                onToggleFavorite={onToggleFavorite}
+              />
             </div>
           ))
         ) : (

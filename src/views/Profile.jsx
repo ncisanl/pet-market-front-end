@@ -20,6 +20,7 @@ const Profile = () => {
     if (!profileData) {
       const token = window.sessionStorage.getItem("token");
       showSpinner();
+
       axios
         .get(ENDPOINT.profile, {
           headers: { Authorization: `Bearer ${token}` },
