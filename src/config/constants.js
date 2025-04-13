@@ -12,4 +12,7 @@ export const ENDPOINT = {
   favorites: `${URLBASE}/user/favorite`,
   addPostFavorite: `${URLBASE}/favorite`,
   deletePostFavorite: `${URLBASE}/favorite/:favoriteId`,
+  createCart: `${URLBASE}/cart`,
+  addPostCart: `${URLBASE}/cart/:cartId`,
+  deleteCart: `${URLBASE}/cart/:cartId`,
 };

@@ -1,22 +1,27 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { ENDPOINT } from "../config/constants.js";
-import { errorToast } from "../utils/toast.js";
+import { errorToast, successToast } from "../utils/toast.js";
 import { useContext, useEffect, useState } from "react";
 import GlobalSpinnerContext from "../contexts/GlobalSpinnerContext.jsx";
+import UserContext from "../contexts/UserContext.jsx";
+import CartContext from "../contexts/CartContext.jsx";
 
 // Función para formatear el precio con separador de miles y prefijo "$"
 const formatPrice = (price) => {
   if (!price) {
-    return;
+    return "";
   }
+
   return "$" + price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 
 function ProductMarketplace() {
   const { postId } = useParams();
+  const { userData } = useContext(UserContext);
   const { showSpinner, hideSpinner } = useContext(GlobalSpinnerContext);
-  const [postDetail, setPostDetail] = useState([]);
+  const { cartData, setCartData } = useContext(CartContext);
+  const [postDetail, setPostDetail] = useState(null);
 
   useEffect(() => {
     const url = ENDPOINT.postDetail.replace(":postId", postId);
@@ -30,7 +35,62 @@ function ProductMarketplace() {
         errorToast(data.message);
       })
       .finally(() => hideSpinner());
-  }, [showSpinner, hideSpinner]);
+  }, [postId, showSpinner, hideSpinner]);
+
+  const createOrAddPostCart = async () => {
+    showSpinner();
+    const token = window.sessionStorage.getItem("token");
+
+    try {
+      if (cartData) {
+        const url = ENDPOINT.addPostCart.replace(":cartId", cartData.cartId);
+        const bodyCart = {
+          postId: postDetail.postId,
+          quantity: 1,
+        };
+        await axios.post(url, bodyCart, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        return successToast("Artículo agregado exitosamente!");
+      }
+
+      const bodyCart = {
+        postId: postDetail.postId,
+        quantity: 1,
+      };
+      const { data } = await axios.post(ENDPOINT.createCart, bodyCart, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setCartData(data);
+      return successToast("Artículo agregado exitosamente!");
+    } catch ({ response: { data } }) {
+      errorToast(data.message);
+    } finally {
+      hideSpinner();
+    }
+  };
+
+  const isLogin = () => {
+    if (userData) {
+      return (
+        <div className="d-flex">
+          <span className="h4 text-dark">{formatPrice(finalPrice)}</span>
+          <button
+            className="btn btn-primary ms-auto"
+            onClick={createOrAddPostCart}
+          >
+            Agregar al carrito
+          </button>
+        </div>
+      );
+    }
+
+    return (
+      <div className="d-flex">
+        <span className="h4 text-dark">{formatPrice(finalPrice)}</span>
+      </div>
+    );
+  };
 
   if (!postDetail) {
     return (
@@ -40,6 +100,11 @@ function ProductMarketplace() {
       </div>
     );
   }
+
+  const finalPrice = postDetail.sale
+    ? postDetail.price -
+      postDetail.price * (postDetail.discountPercentage / 100)
+    : postDetail.price;
 
   return (
     <section className="text-secondary body-font overflow-hidden">
@@ -65,14 +130,7 @@ function ProductMarketplace() {
                   Stock: {postDetail.stock} | Peso: {postDetail.weightKg} kg
                 </small>
               </p>
-              <div className="d-flex">
-                <span className="h4 text-dark">
-                  {formatPrice(postDetail.price)}
-                </span>
-                <button className="btn btn-primary ms-auto">
-                  Agregar al carrito
-                </button>
-              </div>
+              {isLogin()}
             </div>
           </div>
         </div>

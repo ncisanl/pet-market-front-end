@@ -3,6 +3,11 @@ import { useContext } from "react";
 import logo from "../assets/icon/tabIcon.png";
 import UserContext from "../contexts/UserContext.jsx";
 import ProfileContext from "../contexts/ProfileContext.jsx";
+import CartContext from "../contexts/CartContext.jsx";
+import { ENDPOINT } from "../config/constants.js";
+import { errorToast } from "../utils/toast.js";
+import GlobalSpinnerContext from "../contexts/GlobalSpinnerContext.jsx";
+import axios from "axios";
 
 const petTypes = [
   { name: "Gato", path: "gato" },
@@ -15,13 +20,36 @@ const categories = ["Alimentos", "Snacks", "Medicamentos", "Accesorios"];
 const Navigation = () => {
   const navigate = useNavigate();
   const { userData, clearUserData } = useContext(UserContext);
+  const { cartData, clearCartData } = useContext(CartContext);
   const { clearProfileData } = useContext(ProfileContext);
+  const { showSpinner, hideSpinner } = useContext(GlobalSpinnerContext);
 
-  const logout = () => {
-    window.sessionStorage.removeItem("token");
-    clearProfileData();
-    clearUserData();
-    navigate("/login");
+  const logout = async () => {
+    const token = window.sessionStorage.getItem("token");
+
+    if (!cartData) {
+      window.sessionStorage.removeItem("token");
+      clearProfileData();
+      clearUserData();
+      return navigate("/login");
+    }
+    showSpinner();
+
+    try {
+      const url = ENDPOINT.deleteCart.replace(":cartId", cartData.cartId);
+      await axios.delete(url, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } catch ({ response: { data } }) {
+      errorToast(data.message);
+    } finally {
+      window.sessionStorage.removeItem("token");
+      clearProfileData();
+      clearUserData();
+      clearCartData();
+      navigate("/login");
+      hideSpinner();
+    }
   };
   const isLogin = () => {
     if (userData) {
