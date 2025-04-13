@@ -8,6 +8,7 @@ export const ENDPOINT = {
   profile: `${URLBASE}/user/profile`,
   profileUpdate: `${URLBASE}/user/profile/update`,
   postCategoryPetType: `${URLBASE}/posts/pet-type/:petTypeId/category/:categoryId`,
+  postDetail: `${URLBASE}/post/:postId`,
   favorites: `${URLBASE}/user/favorite`,
   addPostFavorite: `${URLBASE}/favorite`,
   deletePostFavorite: `${URLBASE}/favorite/:favoriteId`,
