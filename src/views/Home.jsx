@@ -55,7 +55,7 @@ const Home = () => {
                 "Aprovecha los descuentos de temporada en alimento, accesorios y más. ¡Mima a tu mascota y ahorra!"
               }
               titleButton={"Ver Ofertas"}
-              linkRedirect="/"
+              linkRedirect="/sales"
             />
 
             {/* Card 2 */}

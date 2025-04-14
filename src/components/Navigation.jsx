@@ -177,7 +177,7 @@ const Navigation = () => {
               </li>
             ))}
             <li className="nav-item">
-              <Link className="nav-link nav-link-personalized" to="/">
+              <Link className="nav-link nav-link-personalized" to="/sales">
                 Ofertas
               </Link>
             </li>

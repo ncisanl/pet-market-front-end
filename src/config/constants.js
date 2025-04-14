@@ -12,6 +12,7 @@ export const ENDPOINT = {
   postCategoryPetType: `${URLBASE}/posts/pet-type/:petTypeId/category/:categoryId`,
   postDetail: `${URLBASE}/post/:postId`,
   myPosts: `${URLBASE}/my-posts`,
+  postsSales: `${URLBASE}/posts/sale`,
   post: `${URLBASE}/posts`,
   favorites: `${URLBASE}/user/favorite`,
   addPostFavorite: `${URLBASE}/favorite`,

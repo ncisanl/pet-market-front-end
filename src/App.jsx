@@ -23,6 +23,7 @@ import ProductMarketplace from "./views/ProductMarketplace";
 import Favorite from "./views/Favorite";
 import MyPost from "./views/MyPost";
 import CreatePost from "./views/CreatePost";
+import Sales from "./views/Sales";
 
 const App = () => {
   return (
@@ -56,6 +57,7 @@ const App = () => {
                           <Route path="/favorite" element={<Favorite />} />
                           <Route path="/my-post" element={<MyPost />} />
                           <Route path="/create-post" element={<CreatePost />} />
+                          <Route path="/sales" element={<Sales />} />
                         </Routes>
                       </main>
                       <Footer />
