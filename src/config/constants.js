@@ -1,5 +1,5 @@
 // export const URLBASE = "http://localhost:3000/pet-market"; //TODO: Local
-export const URLBASE = "https://pet-market-front-end.onrender.com"; //TODO: Prod
+export const URLBASE = "https://pet-market-back-end.onrender.com/pet-market"; //TODO: Prod
 
 export const ENDPOINT = {
   regions: `${URLBASE}/regions`,
