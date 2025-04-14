@@ -51,6 +51,7 @@ const Navigation = () => {
       hideSpinner();
     }
   };
+
   const isLogin = () => {
     if (userData) {
       return (
@@ -107,10 +108,14 @@ const Navigation = () => {
         </Link>
 
         <div className="d-flex d-lg-none">
-          <Link className="nav-link login-button shopping-button" to="/">
-            <i className="fa-solid fa-cart-shopping fa-lg"></i>
-          </Link>
-
+          {userData && (
+            <Link
+              className="nav-link login-button shopping-button"
+              to="/cart"
+            >
+              <i className="fa-solid fa-cart-shopping fa-lg"></i>
+            </Link>
+          )}
           <li className="nav-item dropdown d-flex ms-3">
             <button
               className="nav-link login-button"
@@ -181,14 +186,16 @@ const Navigation = () => {
             </li>
           </ul>
 
-          <div className="d-none d-lg-flex">
-            <Link
-              className="nav-link login-button shopping-button"
-              to="/carrito"
-            >
-              <i className="fa-solid fa-cart-shopping fa-lg"></i>
-            </Link>
-          </div>
+          {userData && (
+            <div className="d-none d-lg-flex">
+              <Link
+                className="nav-link login-button shopping-button"
+                to="/cart"
+              >
+                <i className="fa-solid fa-cart-shopping fa-lg"></i>
+              </Link>
+            </div>
+          )}
 
           <li className="nav-item dropdown d-none d-lg-flex ms-3">
             <button

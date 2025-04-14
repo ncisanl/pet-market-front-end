@@ -15,7 +15,7 @@ import Footer from "./components/Footer";
 import Register from "./views/Register.jsx";
 import Login from "./views/Login.jsx";
 import Profile from "./views/Profile.jsx";
-import Carrito from "./views/Carrito";
+import Cart from "./views/Cart.jsx";
 import Marketplace from "./views/Marketplace";
 import ProductMarketplace from "./views/ProductMarketplace";
 import Favorite from "./views/Favorite";
@@ -38,7 +38,7 @@ const App = () => {
                       <Route path="/register" element={<Register />} />
                       <Route path="/login" element={<Login />} />
                       <Route path="/profile" element={<Profile />} />
-                      <Route path="/carrito" element={<Carrito />} />
+                      <Route path="/cart" element={<Cart />} />
                       <Route
                         path="/marketplace/:petType/:category"
                         element={<Marketplace />}
