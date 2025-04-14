@@ -291,3 +291,24 @@ body {
     display: none;
   }
 }
+
+.form-image-create-post {
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  border-radius: 8px;
+  max-width: 100%;
+  margin: 0 20px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.form-create-post {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  border-radius: 8px;
+  text-align: center;
+}

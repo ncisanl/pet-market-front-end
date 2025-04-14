@@ -3,6 +3,8 @@ export const URLBASE = "http://localhost:3000/pet-market";
 export const ENDPOINT = {
   regions: `${URLBASE}/regions`,
   communes: `${URLBASE}/communes`,
+  petType: `${URLBASE}/pet-type`,
+  category: `${URLBASE}/category`,
   login: `${URLBASE}/login`,
   register: `${URLBASE}/register`,
   profile: `${URLBASE}/user/profile`,
@@ -10,6 +12,7 @@ export const ENDPOINT = {
   postCategoryPetType: `${URLBASE}/posts/pet-type/:petTypeId/category/:categoryId`,
   postDetail: `${URLBASE}/post/:postId`,
   myPosts: `${URLBASE}/my-posts`,
+  post: `${URLBASE}/posts`,
   favorites: `${URLBASE}/user/favorite`,
   addPostFavorite: `${URLBASE}/favorite`,
   deletePostFavorite: `${URLBASE}/favorite/:favoriteId`,
