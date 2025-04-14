@@ -62,7 +62,7 @@ const Navigation = () => {
             </Link>
           </li>
           <li>
-            <Link className="dropdown-item" to="/">
+            <Link className="dropdown-item" to="/my-post">
               Publicaciones
             </Link>
           </li>
@@ -109,10 +109,7 @@ const Navigation = () => {
 
         <div className="d-flex d-lg-none">
           {userData && (
-            <Link
-              className="nav-link login-button shopping-button"
-              to="/cart"
-            >
+            <Link className="nav-link login-button shopping-button" to="/cart">
               <i className="fa-solid fa-cart-shopping fa-lg"></i>
             </Link>
           )}

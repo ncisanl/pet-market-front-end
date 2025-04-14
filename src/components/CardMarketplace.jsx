@@ -7,12 +7,16 @@ const formatPrice = (price) => {
   return "$" + price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
 
-const CardMarketplace = ({ product, onToggleFavorite }) => {
+const CardMarketplace = ({
+  product,
+  onToggleFavorite,
+  showFavorites = true,
+}) => {
   const { userData } = useContext(UserContext);
   const [postFavorite, setFavorite] = useState(product.postFavorite || false);
 
   const isLogin = () => {
-    if (userData) {
+    if (userData && showFavorites) {
       return (
         <button
           className="btn btn-link p-0"

@@ -19,6 +19,7 @@ import Cart from "./views/Cart.jsx";
 import Marketplace from "./views/Marketplace";
 import ProductMarketplace from "./views/ProductMarketplace";
 import Favorite from "./views/Favorite";
+import MyPost from "./views/MyPost";
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
                         element={<ProductMarketplace />}
                       />
                       <Route path="/favorite" element={<Favorite />} />
+                      <Route path="/my-post" element={<MyPost />} />
                     </Routes>
                   </main>
                   <Footer />
