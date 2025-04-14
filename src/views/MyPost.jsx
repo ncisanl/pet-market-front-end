@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import GlobalSpinnerContext from "../contexts/GlobalSpinnerContext.jsx";
 import axios from "axios";
 import { ENDPOINT } from "../config/constants.js";
-import { errorToast } from "../utils/toast.js";
+import { errorToast, successToast } from "../utils/toast.js";
 import CardMarketplace from "../components/CardMarketplace.jsx";
 
 function MyPost() {
@@ -30,6 +30,24 @@ function MyPost() {
     loadMyPosts();
   }, [loadMyPosts]);
 
+  const onToggleDelete = async (postId) => {
+    const token = window.sessionStorage.getItem("token");
+    showSpinner();
+    try {
+      const url = ENDPOINT.postDelete.replace(":postId", postId);
+
+      const { data } = await axios.delete(url, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      successToast(data.message);
+      loadMyPosts();
+    } catch ({ response: { data } }) {
+      errorToast(data.message);
+    } finally {
+      hideSpinner();
+    }
+  };
+
   return (
     <div className="p-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -51,7 +69,12 @@ function MyPost() {
               key={product.postId}
               className="col-12 col-sm-6 col-md-4 col-lg-3 d-flex mb-4"
             >
-              <CardMarketplace product={product} showFavorites={false} />
+              <CardMarketplace
+                product={product}
+                showFavorites={false}
+                showDelete={true}
+                onToggleDelete={onToggleDelete}
+              />
             </div>
           ))
         ) : (

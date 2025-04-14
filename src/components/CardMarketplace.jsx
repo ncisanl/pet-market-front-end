@@ -11,6 +11,8 @@ const CardMarketplace = ({
   product,
   onToggleFavorite,
   showFavorites = true,
+  showDelete = false,
+  onToggleDelete,
 }) => {
   const { userData } = useContext(UserContext);
   const [postFavorite, setFavorite] = useState(product.postFavorite || false);
@@ -32,6 +34,16 @@ const CardMarketplace = ({
     }
   };
 
+  const isShowDelete = () => {
+    if (showDelete) {
+      return (
+        <button onClick={toggleDelete} className="btn btn-danger">
+          Eliminar
+        </button>
+      );
+    }
+  };
+
   useEffect(() => {
     setFavorite(product.postFavorite || false);
   }, [product.postFavorite]);
@@ -41,6 +53,12 @@ const CardMarketplace = ({
     setFavorite(newFavorite);
     if (onToggleFavorite) {
       onToggleFavorite(product.postId, product.favoriteId, newFavorite);
+    }
+  };
+
+  const toggleDelete = () => {
+    if (onToggleDelete) {
+      onToggleDelete(product.postId);
     }
   };
 
@@ -76,13 +94,14 @@ const CardMarketplace = ({
         ) : (
           <span className="badge bg-secondary">No disponible</span>
         )}
-        <div className="mt-3">
+        <div className="mt-3 d-flex justify-content-between">
           <Link
             to={`/marketplace/post/${product.postId}`}
             className="btn btn-primary"
           >
             Ver Detalle
           </Link>
+          {isShowDelete()}
         </div>
       </div>
     </div>

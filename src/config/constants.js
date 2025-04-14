@@ -14,6 +14,7 @@ export const ENDPOINT = {
   myPosts: `${URLBASE}/my-posts`,
   postsSales: `${URLBASE}/posts/sale`,
   post: `${URLBASE}/posts`,
+  postDelete: `${URLBASE}/posts/:postId`,
   favorites: `${URLBASE}/user/favorite`,
   addPostFavorite: `${URLBASE}/favorite`,
   deletePostFavorite: `${URLBASE}/favorite/:favoriteId`,
