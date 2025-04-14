@@ -5,8 +5,11 @@ import imgOneCarousel from "../assets/img/img_carousel_01.jpg";
 import imgTwoCarousel from "../assets/img/img_carousel_02.jpg";
 import imgThreeCarousel from "../assets/img/img_carousel_03.jpg";
 import imgFourCarousel from "../assets/img/img_carousel_04.jpg";
+import { useContext } from "react";
+import UserContext from "../contexts/UserContext.jsx";
 
 const Home = () => {
+  const { userData } = useContext(UserContext);
   return (
     <section className="text-muted">
       <div className="d-flex flex-column flex-md-row align-items-center">
@@ -65,8 +68,7 @@ const Home = () => {
               description={
                 "Desde baños y peluquería hasta asesoría veterinaria. Cuida a tu mascota con profesionales de confianza."
               }
-              titleButton={"Encuentra Servicios"}
-              linkRedirect="/"
+              showButton={false}
             />
 
             {/* Card 3 */}
@@ -78,6 +80,7 @@ const Home = () => {
               }
               titleButton={"Únete Ahora"}
               linkRedirect="/register"
+              showButton={!userData}
             />
           </div>
         </div>
