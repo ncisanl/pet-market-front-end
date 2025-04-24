@@ -24,6 +24,7 @@ import Favorite from "./views/Favorite";
 import MyPost from "./views/MyPost";
 import CreatePost from "./views/CreatePost";
 import Sales from "./views/Sales";
+import NotFound from "./views/NotFound";
 
 const App = () => {
   return (
@@ -58,6 +59,7 @@ const App = () => {
                           <Route path="/my-post" element={<MyPost />} />
                           <Route path="/create-post" element={<CreatePost />} />
                           <Route path="/sales" element={<Sales />} />
+                          <Route path="*" element={<NotFound />} />
                         </Routes>
                       </main>
                       <Footer />
